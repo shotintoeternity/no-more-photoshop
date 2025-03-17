@@ -1,4 +1,4 @@
-# No More Photoshop
+# Image Editor with Gemini API
 
 A web application that allows users to edit images using Google's Gemini API.
 
@@ -53,6 +53,16 @@ A web application that allows users to edit images using Google's Gemini API.
 - Image editing quality depends on the Gemini API's capabilities
 - There may be usage limits based on your Gemini API tier
 - Best performance with specific languages (English, Spanish, Japanese, Chinese, Hindi)
+
+### Troubleshooting
+
+If you encounter the "No image found in response" error:
+
+1. Check the API response details by clicking the "Show API Details" button
+2. Try a simpler edit request (e.g., "Change the background color to blue" instead of a complex edit)
+3. Make sure your image isn't too large (resize to under 4MB if necessary)
+4. Verify your API key has the correct permissions for image generation
+5. The application will automatically try a fallback to Gemini 1.5 Pro if the first attempt fails
 
 ## Privacy Note
 
