@@ -22,9 +22,6 @@ let editedImage = null;
 let apiKey = null;
 let selectedPrompt = null;
 
-// Use a hardcoded API key as last resort
-const HARDCODED_API_KEY = 'AIzaSyDof92c4-qTw3bzr2i1h1Uw8VJ1Ui9ni6o';
-
 // Fetch API key from server on load
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('DOM loaded, fetching API key...');
@@ -46,27 +43,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             apiKeyModal.style.display = 'none'; // Hide the modal if showing
         } else {
             console.error('Failed to load API key from server:', data.error);
-            
-            // Try to use the hardcoded key as a fallback
-            apiKey = HARDCODED_API_KEY;
-            console.log('Using hardcoded API key as fallback');
-            
-            // Only show the modal if we don't have a hardcoded key
-            if (!apiKey) {
-                apiKeyModal.style.display = 'flex';
-            }
+            apiKeyModal.style.display = 'flex';
         }
     } catch (error) {
         console.error('Error fetching API key:', error);
-        
-        // Try to use the hardcoded key as a fallback
-        apiKey = HARDCODED_API_KEY;
-        console.log('Using hardcoded API key as fallback after error');
-        
-        // Only show the modal if we don't have a hardcoded key
-        if (!apiKey) {
-            apiKeyModal.style.display = 'flex';
-        }
+        apiKeyModal.style.display = 'flex';
     }
 });
 

@@ -27,7 +27,7 @@ A Node webapp that allows users to edit images using Google's Gemini API.
    ```
    cp .env.example .env
    ```
-4. Edit the `.env` file and replace `your_api_key_here` with your actual Gemini API key
+4. Edit the `.env` file and replace `your_api_key_here` with your actual Gemini API key from [Google AI Studio](https://ai.google.dev/)
 5. Start the server:
    ```
    npm start
