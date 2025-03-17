@@ -1,0 +1,11 @@
+# Environment variables
+.env
+
+# Node modules
+node_modules/
+
+# Editor and OS files
+.DS_Store
+.vscode/
+*.swp
+*~
