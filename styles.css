@@ -1,0 +1,520 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    /* Dark theme colors */
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2d2d2d;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a0a0a0;
+    --accent-primary: #7e57c2;
+    --accent-secondary: #b388ff;
+    --accent-success: #00c853;
+    --accent-warning: #ffd600;
+    --danger: #ff5252;
+    --border-color: #333;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Prevent text selection on interactive elements */
+button, label, .upload-icon, .file-upload-area * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    max-width: 160px;
+    height: auto;
+    border-radius: 10px;
+    background: transparent;
+    transition: all 0.3s ease;
+    animation: logoFadeIn 1s ease-out;
+    display: block; /* Ensures proper rendering */
+    object-fit: contain; /* Preserves aspect ratio */
+    margin: 0 auto; /* Center the logo */
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+@keyframes logoFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+    color: var(--accent-secondary);
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.tagline {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.marketing-description {
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent-primary);
+    text-align: center;
+}
+
+.marketing-description p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+}
+
+.examples-section {
+    margin-top: 20px;
+    background-color: var(--bg-secondary);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.5s ease forwards;
+    box-shadow: var(--shadow);
+}
+
+.examples-section h3 {
+    color: var(--accent-secondary);
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.example-button {
+    background-color: var(--bg-tertiary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    font-weight: normal;
+    min-width: 100px;
+    text-align: center;
+}
+
+.example-button:hover, .example-button.selected {
+    background-color: var(--accent-primary);
+    transform: translateY(-1px);
+    color: white;
+    box-shadow: 0 2px 8px rgba(126, 87, 194, 0.4);
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.separator span {
+    padding: 0 15px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.custom-prompt-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.apply-prompt-button {
+    align-self: flex-end;
+    margin-top: 10px;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: var(--accent-secondary);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.upload-section,
+.edit-section,
+.result-section {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.file-upload-area {
+    border: 2px dashed var(--accent-primary);
+    border-radius: 10px;
+    padding: 20px 15px;
+    text-align: center;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: var(--bg-tertiary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-upload-area:hover {
+    border-color: var(--accent-secondary);
+    background-color: rgba(126, 87, 194, 0.1);
+    transform: translateY(-2px);
+}
+
+.file-upload-area.highlight {
+    border-color: var(--accent-secondary);
+    background-color: rgba(126, 87, 194, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.3);
+}
+
+.file-upload-area p {
+    margin: 15px 0 5px;
+    color: var(--text-secondary);
+}
+
+.upload-icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(126, 87, 194, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-icon {
+    font-size: 2rem;
+    color: var(--accent-secondary);
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px dashed var(--accent-primary);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    resize: vertical;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+textarea:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.3);
+}
+
+button {
+    background-color: var(--accent-primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background-color: var(--accent-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.preview-container {
+    margin: 20px 0;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--bg-tertiary);
+    position: relative;
+}
+
+.preview-container img {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 4px;
+}
+
+.preview-placeholder {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#downloadButton {
+    background-color: var(--accent-success);
+    min-width: 160px;
+}
+
+#downloadButton:hover {
+    background-color: #00e676;
+}
+
+#tryAgainButton {
+    background-color: var(--accent-warning);
+    color: #333;
+    min-width: 160px;
+}
+
+#tryAgainButton:hover {
+    background-color: #ffea00;
+}
+
+#startOverButton {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    min-width: 160px;
+}
+
+#startOverButton:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.spinner {
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-top: 5px solid var(--accent-secondary);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+.loading p {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--bg-secondary);
+    padding: 35px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+    color: var(--accent-secondary);
+}
+
+.modal-content p {
+    margin-bottom: 25px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.modal-content input:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .logo {
+        max-width: 150px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .marketing-description {
+        padding: 20px;
+    }
+    
+    .marketing-description h2 {
+        font-size: 1.5rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    button {
+        width: 100%;
+    }
+    
+    .example {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        max-width: 120px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Fade-in animation for sections */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.upload-section,
+.edit-section,
+.result-section {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.edit-section {
+    animation-delay: 0.1s;
+}
+
+.result-section {
+    animation-delay: 0.2s;
+}

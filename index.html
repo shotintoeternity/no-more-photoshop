@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No More Photoshop | AI Image Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="No More Photoshop Logo" class="logo">
+        </div>
+        <h1>No More Photoshop</h1>
+        <p class="tagline">Transform your photos with the power of AI - no skills required</p>
+        
+        <div class="marketing-description">
+            <p>Edit images with text commands using Google's Gemini AI - no design skills needed! Upload, describe, and transform.</p>
+        </div>
+        
+        <div class="upload-section">
+            <h2><span class="section-number">1</span> Upload Your Image!</h2>
+            <label for="imageUpload" class="file-upload-area">
+                <div class="upload-icon-container">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                </div>
+                <p>Click here to select an image or drag and drop</p>
+                <input type="file" id="imageUpload" accept="image/*">
+            </label>
+            <div id="imagePreview" class="preview-container">
+                <span class="preview-placeholder">Your image will appear here</span>
+            </div>
+        </div>
+        
+        <div id="examplesSection" style="display: none;" class="examples-section">
+            <h2><span class="section-number">2</span> Tell AI What to Do</h2>
+            <h3>Popular transformations:</h3>
+            <div class="examples">
+                <button class="example-button" data-prompt="Add a llama next to me">Add a llama</button>
+                <button class="example-button" data-prompt="Change the background to a beach sunset">Beach sunset</button>
+                <button class="example-button" data-prompt="Make it look like a watercolor painting">Watercolor effect</button>
+                <button class="example-button" data-prompt="Add a rainbow in the sky">Add rainbow</button>
+                <button class="example-button" data-prompt="Turn me into a superhero">Superhero me</button>
+                <button class="example-button" data-prompt="Make it winter with snow">Winter scene</button>
+            </div>
+            <div class="separator">
+                <span>or</span>
+            </div>
+            <div class="custom-prompt-container">
+                <textarea id="customPrompt" placeholder="Describe your own transformation idea..."></textarea>
+                <button id="applyPromptButton" class="apply-prompt-button">
+                    <i class="fas fa-magic"></i> Transform Image
+                </button>
+            </div>
+        </div>
+
+        <!-- Edit section integrated into upload section -->
+
+        <div class="result-section" id="resultSection" style="display: none;">
+            <h2><span class="section-number">3</span> Your Transformed Image</h2>
+            <div id="resultPreview" class="preview-container"></div>
+            <div class="action-buttons">
+                <button id="downloadButton"><i class="fas fa-download"></i> Download Image</button>
+                <button id="tryAgainButton"><i class="fas fa-edit"></i> Try Different Edit</button>
+                <button id="startOverButton"><i class="fas fa-redo"></i> Start Over</button>
+            </div>
+        </div>
+
+        <div id="loadingIndicator" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>AI is working its magic...</p>
+        </div>
+        
+        <div id="apiKeyModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2>Enter Gemini API Key</h2>
+                <p>You need a Gemini API key to use this application. Get one from <a href="https://ai.google.dev/" target="_blank" style="color: var(--accent-secondary);">Google AI Studio</a>.</p>
+                <input type="text" id="apiKeyInput" placeholder="Enter your Gemini API key">
+                <button id="saveApiKey">Save Key</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
